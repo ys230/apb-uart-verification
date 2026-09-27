@@ -1,0 +1,2 @@
+# Analysis only: no physical board pin assignment.
+set_frequency clk 50.000000

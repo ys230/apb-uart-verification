@@ -1,12 +1,14 @@
-# APB3 UART 아키텍처 (v0.2)
+# APB3 UART 아키텍처 (v0.2 코어 및 FPGA 시험 회로)
 
 이 문서는 현재 구현된 회로와 검증 구조를 설명합니다. 회로의 최상위 모듈은 [`rtl/apb_uart.sv`](rtl/apb_uart.sv)의 `apb_uart`이며, 32비트 APB3 **slave** 인터페이스와 `uart_rx`·`uart_tx` 핀을 제공합니다. CPU, APB master, FPGA 보드 회로는 이 모듈에 포함되지 않습니다. 레지스터별 정확한 동작 조건은 [사양](docs/specification.md)을, 실행 방법과 측정 결과는 [README](README.md)와 [v0.2 증거](reports/evidence/v0.2/README.md)를 참고하세요.
+
+FPGA 시험용 상위 모듈 [`fpga_uart_demo`](fpga/rtl/fpga_uart_demo.sv)을 추가했습니다. 이 모듈에는 리셋 동기화기와 [`apb_uart_echo_master`](fpga/rtl/apb_uart_echo_master.sv)가 포함되며 기존 코어를 APB로 제어합니다. CPU는 포함하지 않습니다. 실물 핀맵과 보드 다운로드는 보드 모델 확정 후 진행합니다.
 
 ## 전체 구조
 
 ```mermaid
 flowchart LR
-    master["외부 APB3 master<br/>(현재는 테스트벤치)"] -->|"PSEL · PENABLE · PWRITE<br/>PADDR · PWDATA"| bus
+    master["외부 APB3 master<br/>(테스트벤치 또는 FPGA echo 제어 회로)"] -->|"PSEL · PENABLE · PWRITE<br/>PADDR · PWDATA"| bus
     bus -->|"PRDATA · PREADY · PSLVERR"| master
 
     subgraph dut["apb_uart: PCLK 하나, PRESETn 리셋"]
@@ -100,4 +102,4 @@ flowchart LR
 
 [`tb/tb_top.sv`](tb/tb_top.sv)의 APB driver는 CPU 대신 전송을 만들고, TX 핀 모니터는 DUT 내부 상태를 보지 않고 실제 핀에서 프레임을 해독합니다. RX는 별도의 직렬 소스가 보낸 바이트와 APB로 읽은 값을 비교합니다. [`tb/fifo_tb.sv`](tb/fifo_tb.sv)는 깊이 5에서 FIFO 경계와 포인터 순환을 별도로 검사합니다. [`assertions/apb_uart_assertions.sv`](assertions/apb_uart_assertions.sv)의 assertion은 APB ready/error 타이밍과 오류 시 부수 효과를 검사합니다. 이 assertion은 검증용이며 UART RTL의 데이터 경로는 아닙니다.
 
-`make regress`는 FIFO 1건, `WAIT_CYCLES=0/1/3`의 APB·TX·RX 지정 시험 9건, 고정 seed 20개의 무작위 시험을 실행합니다. v0.2 결과는 [증거 보고서](reports/evidence/v0.2/README.md)에 기록되어 있습니다. 현재 검증은 디지털 시뮬레이션 결과입니다. FPGA 합성·타이밍·실물 보드 동작, CPU·펌웨어 통합, IRQ·DMA·패리티·16550 호환성은 구현 범위에 포함되지 않습니다.
+`make regress`는 FIFO 1건, `WAIT_CYCLES=0/1/3`의 APB·TX·RX 지정 시험 9건, 고정 seed 20개의 무작위 시험을 실행합니다. v0.2 결과는 [증거 보고서](reports/evidence/v0.2/README.md)에 기록되어 있습니다. 추가한 `make test-fpga`는 echo 회로의 UART 핀 왕복과 APB 대기·오류·리셋을 검증합니다. 범용 합성과 분석용 HX8K 배치·배선도 실행했습니다. [FPGA 실행 안내](docs/fpga-validation.md)에 데이터 흐름, 타이밍 범위와 [추가 증거](reports/evidence/fpga-prep/README.md)를 정리했습니다. **실물 보드 동작은 미검증**이며 CPU·펌웨어 통합, IRQ·DMA·패리티·16550 호환성은 구현 범위에 포함되지 않습니다.

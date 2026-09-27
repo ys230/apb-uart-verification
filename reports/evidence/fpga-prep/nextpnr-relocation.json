@@ -1,0 +1,12 @@
+{
+  "method": "one equal-length ELF string replacement in a local executable copy",
+  "original_binary": "build/synthesis-tools/root/usr/bin/nextpnr-ice40",
+  "original_sha256": "996ed85e63096226880937e18fe967c6b6e3b6c0813a111279d4cb053a0dcac9",
+  "relocated_binary": "build/synthesis-tools/bin/nextpnr-ice40.local",
+  "relocated_sha256": "16ca59d393c13c998f043a052b11047ebc90e84e42da4c1fd137cbf5bbf4bcf9",
+  "old_prefix": "/usr/share/nextpnr/",
+  "new_prefix": "/tmp/np-3484e70234/",
+  "replacement_count": 1,
+  "database_link": "/tmp/np-3484e70234",
+  "database_directory": "build/synthesis-tools/root/usr/share/nextpnr"
+}

@@ -1,0 +1,51 @@
+{
+   "creator": "Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)",
+   "invocation": "stat -json ",
+   "modules": {
+      "\\fpga_uart_demo": {
+         "num_wires":         468,
+         "num_wire_bits":     1679,
+         "num_pub_wires":     468,
+         "num_pub_wire_bits": 1679,
+         "num_ports":         6,
+         "num_port_bits":     6,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         981,
+         "num_cells_by_type": {
+            "$scopeinfo": 6,
+            "SB_CARRY": 52,
+            "SB_DFFE": 256,
+            "SB_DFFER": 133,
+            "SB_DFFES": 2,
+            "SB_DFFR": 10,
+            "SB_DFFS": 4,
+            "SB_LUT4": 518
+         }
+      }
+   },
+      "design": {
+         "num_wires":         468,
+         "num_wire_bits":     1679,
+         "num_pub_wires":     468,
+         "num_pub_wire_bits": 1679,
+         "num_ports":         6,
+         "num_port_bits":     6,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         981,
+         "num_cells_by_type": {
+            "$scopeinfo": 6,
+            "SB_CARRY": 52,
+            "SB_DFFE": 256,
+            "SB_DFFER": 133,
+            "SB_DFFES": 2,
+            "SB_DFFR": 10,
+            "SB_DFFS": 4,
+            "SB_LUT4": 518
+         }
+      }
+}
+

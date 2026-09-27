@@ -17,7 +17,7 @@ jobs:
       - name: 시뮬레이터 설치
         run: |
           sudo apt-get update
-          sudo apt-get install -y verilator make g++ python3
+          sudo apt-get install -y verilator make g++ python3 python3-serial
       - name: RTL 정적 검사
         run: make lint
       - name: 지향 및 무작위 회귀 검증
@@ -26,10 +26,47 @@ jobs:
         run: make mutation
       - name: 시뮬레이터의 SVA 실행 확인
         run: python3 scripts/probe_assertions.py
+      - name: FPGA echo 회로와 PC 검사기 검증
+        run: |
+          make lint-fpga
+          make test-fpga WAIT_CYCLES=0
+          make test-fpga WAIT_CYCLES=3
+          make test-hardware-tools
       - name: 검증 증거 저장
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: apb-uart-verification
           path: reports/runs/latest/
+          if-no-files-found: warn
+
+  synthesis:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: 도구 설치 준비
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make curl python3
+      - name: 합성 도구 로컬 설치
+        run: bash scripts/setup-synthesis.sh
+      - name: UART 범용 합성
+        run: make synth
+      - name: 분석용 FPGA 배치·배선 및 내부 타이밍
+        run: make timing-reference
+      - name: 합성 및 타이밍 보고서 저장
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: apb-uart-synthesis-reference-timing
+          path: |
+            build/synth/*/summary.json
+            build/synth/*/stat.json
+            build/synth/*/*.log
+            build/timing-reference/latest/summary.json
+            build/timing-reference/latest/pnr-report.json
+            build/timing-reference/latest/*.log
+            build/synthesis-tools/package-manifest.tsv
+            build/synthesis-tools/nextpnr-relocation.json
           if-no-files-found: warn

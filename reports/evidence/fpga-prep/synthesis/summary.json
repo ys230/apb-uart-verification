@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-27T13:27:17.054597+00:00",
+  "status": "passed",
+  "passed": true,
+  "flow": "sv2v -> Yosys generic synth -> check -assert -> no latches",
+  "top": "apb_uart",
+  "parameters": {
+    "WAIT_CYCLES": 0,
+    "FIFO_DEPTH": 16
+  },
+  "sources": {
+    "rtl/sync_fifo.sv": "b7cd65eab8540dad6fe0c480a35b16de20802028e552ff43d26b3a117d05d357",
+    "rtl/uart_tx.sv": "a813db33cb02f0c3313e648590c2b28bc687f95795a52080ceb14a18c5c3942f",
+    "rtl/uart_rx.sv": "fb94d7fb8b855ca2b5c5cb4147b66bf94e93b0c0c949a3a81afe4ee1f8a9c2e1",
+    "rtl/apb_uart.sv": "6dcffaefe6a84eb7d844af43199454845069d7a021f688b5ee9d5c32bd59155f"
+  },
+  "inputs": {
+    "rtl/sync_fifo.sv": "b7cd65eab8540dad6fe0c480a35b16de20802028e552ff43d26b3a117d05d357",
+    "rtl/uart_tx.sv": "a813db33cb02f0c3313e648590c2b28bc687f95795a52080ceb14a18c5c3942f",
+    "rtl/uart_rx.sv": "fb94d7fb8b855ca2b5c5cb4147b66bf94e93b0c0c949a3a81afe4ee1f8a9c2e1",
+    "rtl/apb_uart.sv": "6dcffaefe6a84eb7d844af43199454845069d7a021f688b5ee9d5c32bd59155f",
+    "scripts/run_synthesis.py": "93607c28a67dc8e1f9d55b5ed29080b53888c66b56c9d0e5889315f50808aa63",
+    "synth/generic.ys.in": "445135a27d5b8345d010ffe3fa63826f1c1ee1264d8476d6ef3065bb0cec920e"
+  },
+  "input_sha256": "14931b25b2a7a12deb0cd84a627fef612b84c5436586074b05d8b0752b6365b7",
+  "scope": "Generic Boolean cells; no target FPGA, pin constraints, placement, routing or static timing analysis.",
+  "timing": {
+    "performed": false,
+    "fmax_mhz": null,
+    "slack_ns": null
+  },
+  "board_test": {
+    "performed": false
+  },
+  "tools": {
+    "sv2v": {
+      "version": "sv2v v0.0.12",
+      "path": "build/synthesis-tools/bin/sv2v",
+      "sha256": "b29952bc8f400ca90207507db0ff6763263e03d3eec711da80338430ed636b9b"
+    },
+    "yosys": {
+      "version": "Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)",
+      "path": "build/synthesis-tools/root/usr/bin/yosys",
+      "sha256": "30aa795bec7533dac08bad56309edb6ac70dd33f017c28082d3c1dae1012112f"
+    }
+  },
+  "commands": [
+    [
+      "build/synthesis-tools/bin/sv2v",
+      "-D",
+      "SYNTHESIS",
+      "rtl/sync_fifo.sv",
+      "rtl/uart_tx.sv",
+      "rtl/uart_rx.sv",
+      "rtl/apb_uart.sv"
+    ],
+    [
+      "build/synthesis-tools/root/usr/bin/yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "build/synth/apb_uart-wait0-depth16/run.ys"
+    ]
+  ],
+  "statistics": {
+    "num_wires": 1618,
+    "num_wire_bits": 2184,
+    "num_pub_wires": 101,
+    "num_pub_wire_bits": 643,
+    "num_ports": 12,
+    "num_port_bits": 105,
+    "num_memories": 0,
+    "num_memory_bits": 0,
+    "num_processes": 0,
+    "num_cells": 2026,
+    "num_cells_by_type": {
+      "$_ANDNOT_": 580,
+      "$_AND_": 102,
+      "$_DFFE_PN0N_": 2,
+      "$_DFFE_PN0P_": 174,
+      "$_DFFE_PN1P_": 2,
+      "$_DFFE_PP_": 256,
+      "$_DFF_PN0_": 2,
+      "$_DFF_PN1_": 3,
+      "$_MUX_": 90,
+      "$_NAND_": 68,
+      "$_NOR_": 67,
+      "$_NOT_": 63,
+      "$_ORNOT_": 114,
+      "$_OR_": 438,
+      "$_XNOR_": 9,
+      "$_XOR_": 56
+    }
+  },
+  "cell_counts": {
+    "total": 2026,
+    "flip_flops": 439,
+    "latches": 0
+  },
+  "warnings": [
+    "Warning: Replacing memory \\mem with list of registers. See converted.v:65",
+    "Warning: Replacing memory \\mem with list of registers. See converted.v:65"
+  ],
+  "checks": {
+    "hierarchy": true,
+    "structural_check": true,
+    "no_latches": true,
+    "inputs_unchanged": true
+  },
+  "artifacts": {
+    "converted.v": {
+      "path": "build/synth/apb_uart-wait0-depth16/converted.v",
+      "sha256": "53b1dfe31ab025f27522b8de471b565b648178651fd65e06d58fdb0def3ecf84"
+    },
+    "sv2v.log": {
+      "path": "build/synth/apb_uart-wait0-depth16/sv2v.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "yosys.log": {
+      "path": "build/synth/apb_uart-wait0-depth16/yosys.log",
+      "sha256": "7190ed86e6e0d49697e18b56bb7a73a8f2813dc68532fe5f883adf8877142acc"
+    },
+    "run.ys": {
+      "path": "build/synth/apb_uart-wait0-depth16/run.ys",
+      "sha256": "72771aca2afb1ec3e5f1247a5f91dbf70092e2f833b9593ce68a520008bedae5"
+    },
+    "stat.json": {
+      "path": "build/synth/apb_uart-wait0-depth16/stat.json",
+      "sha256": "127d82dc98e73ff7a860183c44b5bd57e156582733a995b5313d6b1d4428ffb2"
+    },
+    "netlist.json": {
+      "path": "build/synth/apb_uart-wait0-depth16/netlist.json",
+      "sha256": "cbf10af73467ef5da20b73efae6286720ac1efdb3163b21b5878416b0618a868"
+    },
+    "netlist.v": {
+      "path": "build/synth/apb_uart-wait0-depth16/netlist.v",
+      "sha256": "457ed419cb2bb00119db53538cd8043a4cd4d180cfa7068c9bc0dc66dbaec706"
+    }
+  },
+  "package_manifest": {
+    "path": "build/synthesis-tools/package-manifest.tsv",
+    "sha256": "d54c9bbc2fcaf62eeac64025342f422baa38d5aebafe4a066a16047138a95315"
+  },
+  "finished_utc": "2026-09-27T13:27:17.688782+00:00"
+}

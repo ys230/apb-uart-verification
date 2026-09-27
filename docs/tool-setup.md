@@ -1,5 +1,7 @@
 # 로컬 시뮬레이션 도구 설치
 
+합성 및 분석용 FPGA 배치·배선 도구는 [별도 실행 안내](fpga-validation.md#2-지금-pc에서-실행하기)에 따라 `bash scripts/setup-synthesis.sh`로 설치합니다. 이 문서는 Verilator와 파형 뷰어 설치를 설명합니다.
+
 이 프로젝트는 Verilator, GNU Make, C++ 컴파일러를 사용합니다. Ubuntu 26.04 amd64 환경(WSL2 포함)에서는 다음 명령으로 `sudo` 없이 프로젝트 내부에 도구를 설치할 수 있습니다.
 
 ```bash

@@ -1,0 +1,12 @@
+# scripts/run_synthesis.py가 경로/상위 모듈/매개변수를 채운다.
+# 라이브러리나 FPGA를 지정하지 않는 범용 셀 합성이다.
+read_verilog converted.v
+hierarchy -check -top apb_uart -chparam WAIT_CYCLES 3 -chparam FIFO_DEPTH 5
+synth -top apb_uart -flatten
+# 계층 추적 메타데이터는 논리 셀 개수에서 제외한다.
+delete t:$scopeinfo
+check -assert
+select -assert-none t:$dlatch t:$adlatch t:$_DLATCH_* t:$_DLATCHSR_*
+tee -o stat.json stat -json -top apb_uart
+write_json netlist.json
+write_verilog -noattr netlist.v

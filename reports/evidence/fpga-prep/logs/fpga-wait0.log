@@ -1,0 +1,18 @@
+make[1]: Entering directory '.'
+mkdir -p build/fpga-demo-wait0
+verilator --binary --timing --assert -Wall --top-module fpga_demo_tb \
+	-GWAIT_CYCLES=0 --Mdir build/fpga-demo-wait0 \
+	rtl/sync_fifo.sv rtl/uart_tx.sv rtl/uart_rx.sv rtl/apb_uart.sv fpga/rtl/apb_uart_echo_master.sv fpga/rtl/fpga_uart_demo.sv tb/fpga_demo_tb.sv
+make[2]: Entering directory 'build/fpga-demo-wait0'
+make[2]: Nothing to be done for 'default'.
+make[2]: Leaving directory 'build/fpga-demo-wait0'
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.009 s (elab=0.000, cvt=0.000, bld=0.009); cpu 0.001 s on 1 threads; alloced 7.004 MB
+build/fpga-demo-wait0/Vfpga_demo_tb
+FPGA_DEMO_PASS wait=0 echoed=261 wait_edges=0 reset_abort=1 framing_fault=1 apb_fault=1
+- tb/fpga_demo_tb.sv:202: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 923us; walltime 0.024 s; speed 37.588 ms/s
+- Verilator: cpu 0.025 s on 1 threads; alloced 89 MB
+make[1]: Leaving directory '.'

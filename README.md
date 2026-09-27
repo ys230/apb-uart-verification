@@ -4,6 +4,8 @@ SystemVerilog로 설계한 APB3 UART와 결과를 스스로 판정하는 SystemV
 
 **현재 상태: v0.2 로컬 검증 완료.** 고정된 seed 20개에서 각각 랜덤 APB 동작 1,000건을 실행한 것을 포함해 회귀 시험 30건을 모두 통과했습니다. [검증 증거](reports/evidence/v0.2/README.md)에 로그, 커버리지, 파형, TX 핀 모니터가 발견한 의도적 결함이 있습니다. 현재 기능과 연결 구조는 [아키텍처](architecture.md)에, 구현 범위는 [v0.2 로드맵](docs/roadmap.md), [사양](docs/specification.md), [검증 계획](docs/verification-plan.md)에 정리했습니다. [최초 제안서](IMPLEMENTATION_PLAN.md)도 참고용으로 보관합니다.
 
+**합성·FPGA 준비 단계 추가:** 범용 합성, 분석용 iCE40 HX8K 배치·배선, APB UART echo 회로와 PC 직렬 검사기를 구현했습니다. [한글 실행 안내](docs/fpga-validation.md)와 [실행 증거](reports/evidence/fpga-prep/README.md)를 참고하세요. 실제 FPGA 보드 모델과 핀 제약은 아직 미정이며 **실물 시험은 미실행**입니다. 기존 v0.2 증거는 당시 소스에 대한 기록으로 보존합니다.
+
 ## 설계 구성
 
 ```text

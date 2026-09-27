@@ -1,0 +1,3 @@
+SYNTH_PASS top=apb_uart cells=2026 flip_flops=439 latches=0
+결과: build/synth/apb_uart-wait0-depth16/summary.json
+범용 셀 합성 결과이며 FPGA 자원 수·타이밍·보드 동작 측정이 아닙니다.

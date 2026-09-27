@@ -1,0 +1,12 @@
+make[1]: Entering directory '.'
+verilator --lint-only -Wall --top-module fpga_uart_demo \
+	-GCLK_HZ=50000000 -GBAUD_RATE=115200 rtl/sync_fifo.sv rtl/uart_tx.sv rtl/uart_rx.sv rtl/apb_uart.sv fpga/rtl/apb_uart_echo_master.sv fpga/rtl/fpga_uart_demo.sv
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.146 MB sources in 7 modules, into 0.069 MB in 5 C++ files needing 0.000 MB
+- Verilator: Walltime 0.009 s (elab=0.001, cvt=0.004, bld=0.000); cpu 0.009 s on 1 threads; alloced 8.781 MB
+verilator --lint-only --timing --assert -Wall --top-module fpga_demo_tb \
+	-GWAIT_CYCLES=0 rtl/sync_fifo.sv rtl/uart_tx.sv rtl/uart_rx.sv rtl/apb_uart.sv fpga/rtl/apb_uart_echo_master.sv fpga/rtl/fpga_uart_demo.sv tb/fpga_demo_tb.sv
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.188 MB sources in 8 modules, into 1.334 MB in 6 C++ files needing 0.000 MB
+- Verilator: Walltime 0.057 s (elab=0.002, cvt=0.042, bld=0.000); cpu 0.057 s on 1 threads; alloced 17.277 MB
+make[1]: Leaving directory '.'

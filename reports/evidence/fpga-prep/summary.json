@@ -1,0 +1,193 @@
+{
+  "generated_utc": "2026-09-27T13:27:11.936804+00:00",
+  "scope": "RTL simulation, generic synthesis and reference FPGA place-and-route; no physical board test",
+  "physical_board_test": "not_run",
+  "board_model": null,
+  "source_files": {
+    ".github/workflows/verify.yml": "1eb2fcae8d7da6d9e490de652a8aad6fece3e9f90a1c554328b81c097e64c417",
+    "Makefile": "01e809484d257d0f81c582d42b73a68c94ac6ae6b07b650bc8c8b2678be41cde",
+    "assertions/apb_uart_assertions.sv": "5df4ab99d520f5e0b2107ebfcbf0d19718a4111caaab4b25dcf31f923a78f5d5",
+    "fpga/rtl/apb_uart_echo_master.sv": "34843b5b1e6b8b7b1c03c944997d5bb4b1ee4be46acd8d3c332833dfa8548410",
+    "fpga/rtl/fpga_uart_demo.sv": "2429884092b1fb3de32b93a8b259ef47d10f4cb49236f1c87cb3a08001a4c2c7",
+    "requirements-hardware.txt": "ba03059785fb4ab0ad4dd87d10b87d4b9d4eaa64f257c7c9be5d534f444f44ca",
+    "rtl/apb_uart.sv": "6dcffaefe6a84eb7d844af43199454845069d7a021f688b5ee9d5c32bd59155f",
+    "rtl/sync_fifo.sv": "b7cd65eab8540dad6fe0c480a35b16de20802028e552ff43d26b3a117d05d357",
+    "rtl/uart_rx.sv": "fb94d7fb8b855ca2b5c5cb4147b66bf94e93b0c0c949a3a81afe4ee1f8a9c2e1",
+    "rtl/uart_tx.sv": "a813db33cb02f0c3313e648590c2b28bc687f95795a52080ceb14a18c5c3942f",
+    "scripts/check_mutation.py": "41dcd3620c2e6c55aa955f5f7bcc82a306a819d4bd80c0e6770a06954a0ff0fb",
+    "scripts/probe_assertions.py": "0eb9c42268d17670c936f5bfb06db1c756d846b0747679d593d941e854ded521",
+    "scripts/publish_evidence.py": "f0974d80ff981b56c5835ca06b86563e58f1d8c24ef85005acd307ac94ffc449",
+    "scripts/publish_fpga_evidence.py": "9892cf28c3dd2dfae9790df6e6cc5058f74b200da8ddd6b533c10adfd6f40317",
+    "scripts/regress.py": "3faa80b7fa17fcae89b57057b3694e234ff9c121b47ffb46f099a4389cae6549",
+    "scripts/run_synthesis.py": "93607c28a67dc8e1f9d55b5ed29080b53888c66b56c9d0e5889315f50808aa63",
+    "scripts/run_timing_reference.py": "5ff9d3b9f5671f075873660c50142102be3116393f124581336c6f36ab34bdaa",
+    "scripts/setup-gtkwave.sh": "2051add7e66daf3b0b00c899d02aedcd1fd6eec3f270a14b2c4e331971279f95",
+    "scripts/setup-synthesis.sh": "35602b1e683f21dd7ece08a61ad01a415cb08d5892fd4e6408dfc34004a62112",
+    "scripts/setup-toolchain.sh": "b2b16d77a5a31e7ed30a146fe1c1192a3d652d997da273f46a3d6f8c63847e01",
+    "scripts/test_fpga_uart.py": "6d5dce8bbd060cefe24001f954e0ff3dc1668d045df5268041807319718084b3",
+    "synth/generic.ys.in": "445135a27d5b8345d010ffe3fa63826f1c1ee1264d8476d6ef3065bb0cec920e",
+    "synth/nextpnr_local.py": "7338695a9c425ed314b9c28f0cab3bd4281721590007d82dfae8acc4c99ace47",
+    "tb/fifo_tb.sv": "a440dba40efaabad5bfe553303b1ff000c1b4b875268ff59958ca0af3aa8a700",
+    "tb/fpga_demo_tb.sv": "1ab49dd14033b4ecc266d8269049502ef64abc274c312f12bfcd8abb466b48d4",
+    "tb/tb_top.sv": "6835485ec569dd07b97b9029b4cf592f45327427391fa884f22ec63ac8a40116",
+    "tests/test_fpga_uart.py": "cb046f7e5f1242f195be3cde0625f3505130cd739589da527062b8376b328e70"
+  },
+  "cases": [
+    {
+      "name": "rtl-lint",
+      "command": [
+        "make",
+        "lint"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.489,
+      "log": "logs/rtl-lint.log"
+    },
+    {
+      "name": "core-regression",
+      "command": [
+        "make",
+        "regress"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.313,
+      "log": "logs/core-regression.log"
+    },
+    {
+      "name": "fpga-lint",
+      "command": [
+        "make",
+        "lint-fpga"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.137,
+      "log": "logs/fpga-lint.log"
+    },
+    {
+      "name": "fpga-wait0",
+      "command": [
+        "make",
+        "test-fpga",
+        "WAIT_CYCLES=0"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.076,
+      "log": "logs/fpga-wait0.log"
+    },
+    {
+      "name": "fpga-wait3",
+      "command": [
+        "make",
+        "test-fpga",
+        "WAIT_CYCLES=3"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.076,
+      "log": "logs/fpga-wait3.log"
+    },
+    {
+      "name": "host-checker",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_fpga_uart.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 1.996,
+      "log": "logs/host-checker.log"
+    },
+    {
+      "name": "generic-synthesis",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/run_synthesis.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.673,
+      "log": "logs/generic-synthesis.log"
+    },
+    {
+      "name": "generic-synthesis-depth5",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/run_synthesis.py",
+        "--wait-cycles",
+        "3",
+        "--fifo-depth",
+        "5"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 0.574,
+      "log": "logs/generic-synthesis-depth5.log"
+    },
+    {
+      "name": "reference-timing",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/run_timing_reference.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "seconds": 2.509,
+      "log": "logs/reference-timing.log"
+    }
+  ],
+  "passed": true,
+  "inputs_unchanged": true,
+  "generic_cells": {
+    "total": 2026,
+    "flip_flops": 439,
+    "latches": 0
+  },
+  "reference_fmax": {
+    "clk$SB_IO_IN_$glb_clk": {
+      "achieved": 83.71002960205078,
+      "constraint": 50
+    }
+  },
+  "published_files_sha256": {
+    "README.md": "a370d458f6ac4aab018d8cfa81fbfb537b598a297dc4a70fddbcc79f2be73318",
+    "logs/core-regression.log": "3d5fedc1567202de5ce7b15a3e3b5c510aa84f907ebb4f9f9f426cdbbd1ebb7e",
+    "logs/fpga-lint.log": "179fd3ff31dec55b1b9a42c37588941eda1f240825a6e0c0a00b5f010fdd94b8",
+    "logs/fpga-wait0.log": "9075b9e2c2e565fd4dc1242221107004d3c5e2f3ef55c81d9d0e796b55ec002c",
+    "logs/fpga-wait3.log": "e4b4a9e93dc8bd4cad86c7683f9144e4c433ac24420c105813d39641f0ff539e",
+    "logs/generic-synthesis-depth5.log": "0da82af822426a98e0c20d26f4e6515139d81ecccd08011502279f04ee1aceba",
+    "logs/generic-synthesis.log": "594a15266c3d75ae3be317df0d26d3f5e44580124186d742cc17217e694e00ba",
+    "logs/host-checker.log": "0b7bba80bd090bb3f89ba991df39fd34ee127a9580be11a899a13db63d28cb1a",
+    "logs/reference-timing.log": "6912293ced77396e4d411c32951dd7231415bfccb6c6df18c96ea792a2b27193",
+    "logs/rtl-lint.log": "e71d655df171aa4118a7eda8a8aa82af973afd6cde141ef4bc4575fea3b28b9f",
+    "nextpnr-relocation.json": "190854ef6902e3c21b46073f049d6a53b2bf055a7a47c2dc9b47bffd0d87538b",
+    "package-manifest.tsv": "d54c9bbc2fcaf62eeac64025342f422baa38d5aebafe4a066a16047138a95315",
+    "synthesis/run.ys": "72771aca2afb1ec3e5f1247a5f91dbf70092e2f833b9593ce68a520008bedae5",
+    "synthesis/stat.json": "127d82dc98e73ff7a860183c44b5bd57e156582733a995b5313d6b1d4428ffb2",
+    "synthesis/summary.json": "00397834d57636af57b5d236ca84fd58f225d9a812e1c024530907db88b19ac9",
+    "synthesis/sv2v.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synthesis/yosys.log": "790ffa74c65365c5a55a3f93af808132a705e54002aa8fa67b2773c97f4e55bc",
+    "synthesis-depth5/run.ys": "653f6b85dc5ff90420372595e3ccd5fbb15772e2e5d58a4b0091e248079f1128",
+    "synthesis-depth5/stat.json": "f3a941c08d12423ebe2a3b214178e8078b182b0a059fb2eb1c56addaf1bcc00b",
+    "synthesis-depth5/summary.json": "fa420bf7f90271c2cb1bae06b9b19789089ec235522e83dabac6bdfd6dbecc47",
+    "synthesis-depth5/sv2v.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synthesis-depth5/yosys.log": "79e0f33df3c8a485eb1ce36752130e7f68eabb908551447cf55d369924afe20d",
+    "timing/pnr-report.json": "14756b8b5acd8d377717dc7042d622b7f6ac8aa8b54dde03cd2c34f0979a2541",
+    "timing/pnr.log": "84893160afc0aa219d35178a8b214c1a5c37516b2cfc40ee9adf0570ce459ccd",
+    "timing/reference.pcf": "314dd0458bad0773f3d01b3df9dbb7cd4aab9e14a7c411d19f351e7fbefb3265",
+    "timing/summary.json": "761d4daa0e649a665d978882e0ddd73c1b991b8411cc4e370141e8b0eda81f08",
+    "timing/synth-stat.json": "f736c2d4bff0135d1eaf2a0a461d0e660c5a28dea35791182239f00c6121d29f",
+    "timing/synth.log": "2f9f3e7b7b46de5af59e7d0d7b20aebcd634003a63215fced32f8bc0b0c9ea4e",
+    "timing/synth.ys": "437451bd38d9b590585935ae30736ae2c01cbc8b9c1ff89b1bb262e7844fe2ac"
+  }
+}

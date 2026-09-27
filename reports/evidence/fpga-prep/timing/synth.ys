@@ -1,0 +1,6 @@
+read_verilog build/timing-reference/latest/converted.v
+chparam -set CLK_HZ 50000000 -set BAUD_RATE 115200 fpga_uart_demo
+hierarchy -check -top fpga_uart_demo
+synth_ice40 -top fpga_uart_demo -json build/timing-reference/latest/netlist.json
+check -assert
+tee -o build/timing-reference/latest/synth-stat.json stat -json

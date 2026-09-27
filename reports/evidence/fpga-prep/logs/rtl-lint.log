@@ -1,0 +1,11 @@
+make[1]: Entering directory '.'
+verilator --lint-only -Wall --top-module apb_uart rtl/sync_fifo.sv rtl/uart_tx.sv rtl/uart_rx.sv rtl/apb_uart.sv
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.086 MB sources in 5 modules, into 0.058 MB in 5 C++ files needing 0.000 MB
+- Verilator: Walltime 0.009 s (elab=0.001, cvt=0.004, bld=0.000); cpu 0.009 s on 1 threads; alloced 8.422 MB
+verilator --lint-only --timing --assert -Wall --top-module tb_top \
+	-GWAIT_CYCLES=0 rtl/sync_fifo.sv rtl/uart_tx.sv rtl/uart_rx.sv rtl/apb_uart.sv assertions/apb_uart_assertions.sv tb/tb_top.sv
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.173 MB sources in 8 modules, into 4.695 MB in 7 C++ files needing 0.000 MB
+- Verilator: Walltime 0.398 s (elab=0.003, cvt=0.339, bld=0.000); cpu 0.398 s on 1 threads; alloced 42.965 MB
+make[1]: Leaving directory '.'

@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "stage": "reference_place_and_route",
+  "generated_utc": "2026-09-27T13:27:18.302964+00:00",
+  "top": "fpga_uart_demo",
+  "device": "iCE40HX8K",
+  "package": "CT256",
+  "clock_hz": 50000000,
+  "baud": 115200,
+  "seed": 1,
+  "board": null,
+  "pin_assignment": "automatic_reference_only",
+  "physical_verified": false,
+  "programming_bitstream_generated": false,
+  "limitations": [
+    "분석 기준 칩 iCE40 HX8K-CT256의 nextpnr 배치·배선 결과입니다.",
+    "실제 보드가 지정되지 않아 I/O 핀을 자동 배치했습니다. 실물용 핀맵이 아닙니다.",
+    "내부 클록 경로에 대한 도구의 타이밍 추정입니다. 비동기 UART 입력의 전기 특성/메타안정성을 검증하지 않습니다.",
+    "보드 클록/핀/전압/리셋 조건을 확정한 뒤 해당 장치용 구현 및 타이밍 검토를 다시 수행해야 합니다.",
+    "프로그래밍용 bitstream 생성 및 FPGA 다운로드, 실물 시험은 수행하지 않습니다."
+  ],
+  "source_files": {
+    "rtl/sync_fifo.sv": "b7cd65eab8540dad6fe0c480a35b16de20802028e552ff43d26b3a117d05d357",
+    "rtl/uart_tx.sv": "a813db33cb02f0c3313e648590c2b28bc687f95795a52080ceb14a18c5c3942f",
+    "rtl/uart_rx.sv": "fb94d7fb8b855ca2b5c5cb4147b66bf94e93b0c0c949a3a81afe4ee1f8a9c2e1",
+    "rtl/apb_uart.sv": "6dcffaefe6a84eb7d844af43199454845069d7a021f688b5ee9d5c32bd59155f",
+    "fpga/rtl/apb_uart_echo_master.sv": "34843b5b1e6b8b7b1c03c944997d5bb4b1ee4be46acd8d3c332833dfa8548410",
+    "fpga/rtl/fpga_uart_demo.sv": "2429884092b1fb3de32b93a8b259ef47d10f4cb49236f1c87cb3a08001a4c2c7",
+    "scripts/run_timing_reference.py": "5ff9d3b9f5671f075873660c50142102be3116393f124581336c6f36ab34bdaa"
+  },
+  "tools": {
+    "sv2v": "sv2v v0.0.12",
+    "yosys": "Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)",
+    "nextpnr": "\"nextpnr-ice40\" -- Next Generation Place and Route (Version 0.9-3)"
+  },
+  "commands": [
+    [
+      "sv2v",
+      "--define=SYNTHESIS",
+      "rtl/sync_fifo.sv",
+      "rtl/uart_tx.sv",
+      "rtl/uart_rx.sv",
+      "rtl/apb_uart.sv",
+      "fpga/rtl/apb_uart_echo_master.sv",
+      "fpga/rtl/fpga_uart_demo.sv"
+    ],
+    [
+      "yosys",
+      "-Q",
+      "-T",
+      "-s",
+      "build/timing-reference/latest/synth.ys"
+    ],
+    [
+      "nextpnr-ice40",
+      "--hx8k",
+      "--package",
+      "ct256",
+      "--json",
+      "build/timing-reference/latest/netlist.json",
+      "--asc",
+      "build/timing-reference/latest/routed.asc",
+      "--pcf",
+      "build/timing-reference/latest/reference.pcf",
+      "--pcf-allow-unconstrained",
+      "--freq",
+      "50.000000",
+      "--seed",
+      "1",
+      "--report",
+      "build/timing-reference/latest/pnr-report.json",
+      "--detailed-timing-report"
+    ]
+  ],
+  "fmax": {
+    "clk$SB_IO_IN_$glb_clk": {
+      "achieved": 83.71002960205078,
+      "constraint": 50
+    }
+  },
+  "tool_files_sha256": {
+    "sv2v": "b29952bc8f400ca90207507db0ff6763263e03d3eec711da80338430ed636b9b",
+    "yosys": "30aa795bec7533dac08bad56309edb6ac70dd33f017c28082d3c1dae1012112f",
+    "nextpnr-ice40": "7338695a9c425ed314b9c28f0cab3bd4281721590007d82dfae8acc4c99ace47"
+  },
+  "utilization": {
+    "ICESTORM_LC": {
+      "available": 7680,
+      "used": 845
+    },
+    "ICESTORM_PLL": {
+      "available": 2,
+      "used": 0
+    },
+    "ICESTORM_RAM": {
+      "available": 32,
+      "used": 0
+    },
+    "SB_GB": {
+      "available": 8,
+      "used": 5
+    },
+    "SB_IO": {
+      "available": 256,
+      "used": 6
+    },
+    "SB_WARMBOOT": {
+      "available": 1,
+      "used": 0
+    }
+  },
+  "elapsed_seconds": 2.468,
+  "artifacts": {
+    "converted.v": "89cc9c74523a8a4325885db3555148cc6ea9e9a11f81bb5f2fb3bb76dc33d628",
+    "synth.ys": "437451bd38d9b590585935ae30736ae2c01cbc8b9c1ff89b1bb262e7844fe2ac",
+    "reference.pcf": "314dd0458bad0773f3d01b3df9dbb7cd4aab9e14a7c411d19f351e7fbefb3265",
+    "netlist.json": "30e4f6557b54490b5c2c6d0f73d814939229e2336c28a271dbca3abcc0b99394",
+    "routed.asc": "6583273355b82ae5e18b32318e7d73f0604e21490f8840ec58d4863d3745ccb7",
+    "synth-stat.json": "f736c2d4bff0135d1eaf2a0a461d0e660c5a28dea35791182239f00c6121d29f",
+    "pnr-report.json": "61bfd88d097baeabdbaf5ad21f4add3888aedec81a17bd58da28b6ef73547eb2",
+    "sv2v.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synth.log": "c5c230b9ae5119ba028d1b9689633015d88603446da411cc39b795ab66a67ec5",
+    "pnr.log": "3b93e7a3a5c0cfba013a2da8bab72b5f4553cf40d47102c89ae043c80f0d57d9"
+  }
+}

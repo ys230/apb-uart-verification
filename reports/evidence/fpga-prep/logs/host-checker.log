@@ -1,0 +1,15 @@
+test_loopback_has_no_physical_claim_even_with_board_metadata (test_fpga_uart.TesterTests.test_loopback_has_no_physical_claim_even_with_board_metadata) ... ok
+test_loopback_requires_explicit_software_mode (test_fpga_uart.TesterTests.test_loopback_requires_explicit_software_mode) ... ok
+test_open_failure_writes_failure_evidence (test_fpga_uart.TesterTests.test_open_failure_writes_failure_evidence) ... ok
+test_pty_binary_payload_and_chunk_independent_pattern (test_fpga_uart.TesterTests.test_pty_binary_payload_and_chunk_independent_pattern) ... ok
+test_pty_blocked_write_is_bounded (test_fpga_uart.TesterTests.test_pty_blocked_write_is_bounded) ... ok
+test_pty_extra_byte_fails_after_last_chunk (test_fpga_uart.TesterTests.test_pty_extra_byte_fails_after_last_chunk) ... ok
+test_pty_missing_byte_fails_with_exact_missing_count (test_fpga_uart.TesterTests.test_pty_missing_byte_fails_with_exact_missing_count) ... ok
+test_pty_partial_reads_are_reassembled (test_fpga_uart.TesterTests.test_pty_partial_reads_are_reassembled) ... ok
+test_pty_silent_peer_times_out (test_fpga_uart.TesterTests.test_pty_silent_peer_times_out) ... ok
+test_pty_wrong_byte_fails (test_fpga_uart.TesterTests.test_pty_wrong_byte_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.953s
+
+OK
