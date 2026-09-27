@@ -32,4 +32,4 @@ bash scripts/setup-gtkwave.sh
 build/viewer/bin/gtkwave reports/evidence/v0.2/tx.vcd reports/evidence/v0.2/tx.gtkw
 ```
 
-설치 버전과 패키지 해시는 `build/viewer/package-manifest.tsv`에 남습니다. `rx.vcd`/`rx.gtkw`와 `apb.vcd`/`apb.gtkw`도 같은 방식으로 열 수 있습니다. `.gtkw` 파일은 파형 파일이 아니라 GTKWave에서 표시할 신호 목록입니다. `DISPLAY`가 설정된 GUI 터미널에서 실행해야 창이 보입니다. 원본 VCD를 새로 생성하려면 저장소 최상위 디렉터리에서 `make waves TEST=tx`를 실행하세요.
+설치 버전과 패키지 해시는 `build/viewer/package-manifest.tsv`에 남습니다. `rx.vcd`/`rx.gtkw`와 `apb.vcd`/`apb.gtkw`도 같은 방식으로 열 수 있습니다. `.gtkw` 파일은 파형 파일이 아니라 GTKWave에서 표시할 신호와 처음 보여 줄 시간 구간을 저장합니다. 화면이 평평하면 상단 눈금이 ps 단위로 지나치게 확대되어 있는지 확인하고, 붙여넣기 다음 `+` 왼쪽의 **Zoom Fit** 아이콘 또는 `Ctrl+0`으로 전체 시간을 표시하세요. `DISPLAY`가 설정된 GUI 터미널에서 실행해야 창이 보입니다. 원본 VCD를 새로 생성하려면 저장소 최상위 디렉터리에서 `make waves TEST=tx`를 실행하세요.

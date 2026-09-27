@@ -1,8 +1,9 @@
 [*]
 [*] APB UART TX 파형: tx.vcd와 함께 열기
 [*]
-[timestart] 0
+[timestart] 3200000
 [size] 1280 800
+*-19.0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [signals_width] 205
 @28
 tb_top.PCLK

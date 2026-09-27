@@ -1,8 +1,9 @@
 [*]
 [*] APB UART APB 파형: apb.vcd와 함께 열기
 [*]
-[timestart] 0
+[timestart] 180000
 [size] 1280 800
+*-15.0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [signals_width] 205
 @28
 tb_top.PCLK

@@ -68,9 +68,11 @@ bash scripts/setup-gtkwave.sh
 build/viewer/bin/gtkwave reports/evidence/v0.2/tx.vcd reports/evidence/v0.2/tx.gtkw
 ```
 
-RX와 APB는 명령의 `tx` 두 곳을 각각 `rx`, `apb`로 바꾸면 됩니다. 두 번째 `.gtkw` 파일에는 볼 신호 목록이 저장되어 있습니다. GUI 창에서 마우스 휠이나 확대 버튼으로 시간을 확대하고, 커서를 이동해 신호의 변화 시각을 비교할 수 있습니다. TX에서는 `uart_tx`가 높은 유휴 상태에서 낮은 시작 비트, 데이터 비트 8개, 높은 정지 비트로 이어지는지 살펴보세요. RX에서는 `uart_rx` 입력 뒤 `rx_valid`와 `rx_data`를, APB에서는 `PSEL=1, PENABLE=0` 설정 단계와 `PSEL=1, PENABLE=1, PREADY=1` 완료 단계를 살펴보세요. 파형은 동작을 눈으로 이해하는 자료이고, 통과 판정은 위의 자동 검사 결과가 담당합니다.
+RX와 APB는 명령의 `tx` 두 곳을 각각 `rx`, `apb`로 바꾸면 됩니다. 두 번째 `.gtkw` 파일에는 볼 신호 목록과 처음 표시할 시간 구간이 저장되어 있습니다. 파형이 평평하게 보이면 화면 위쪽 시간 눈금을 먼저 확인하세요. `From`/`To`는 파일 전체 시간 범위이고, 눈금이 실제로 표시 중인 범위입니다. 붙여넣기 버튼 다음, `+` 버튼 바로 왼쪽의 **Zoom Fit** 아이콘 또는 `Ctrl+0`으로 전체 기록을 볼 수 있습니다. 자세히 볼 때는 `+` 버튼이나 `Ctrl+마우스 휠 위`를 사용합니다.
 
-[GitHub CI 워크플로](.github/workflows/verify.yml)는 Ubuntu 26.04에서 lint, 전체 회귀 시험, mutation, SVA probe를 실행하고 로그를 업로드하도록 준비되어 있습니다. 이 저장소가 GitHub에 게시되면 워크플로가 동작합니다.
+TX 저장 화면은 약 3.2~5.2 µs의 `0x55` 프레임을 보여 줍니다. `uart_tx`가 높은 유휴 상태에서 3,355 ns에 낮은 시작 비트로 바뀐 뒤, 160 ns마다 데이터 비트 `1,0,1,0,1,0,1,0`을 최하위 비트부터 전송하고 높은 정지 비트로 돌아오는지 살펴보세요. RX에서는 `uart_rx` 입력 뒤 `rx_valid`와 `rx_data`를, APB에서는 `PSEL=1, PENABLE=0` 설정 단계와 `PSEL=1, PENABLE=1, PREADY=1` 완료 단계를 살펴보세요. 파형은 동작을 눈으로 이해하는 자료이고, 통과 판정은 위의 자동 검사 결과가 담당합니다.
+
+[GitHub CI 워크플로](.github/workflows/verify.yml)는 Ubuntu 26.04에서 lint, 전체 회귀 시험, mutation, SVA probe를 실행하고 로그를 업로드합니다. [첫 공개 저장소 실행](https://github.com/ys230/apb-uart-verification/actions/runs/36306098177)에서 모든 단계가 통과했습니다.
 
 ## 확인된 v0.2 결과
 
