@@ -1,0 +1,23 @@
+[*]
+[*] APB UART TX 파형: tx.vcd와 함께 열기
+[*]
+[timestart] 0
+[size] 1280 800
+[signals_width] 205
+@28
+tb_top.PCLK
+tb_top.PRESETn
+tb_top.PSEL
+tb_top.PENABLE
+tb_top.PWRITE
+@22
+tb_top.PADDR[31:0]
+tb_top.PWDATA[31:0]
+@28
+tb_top.PREADY
+tb_top.PSLVERR
+tb_top.dut.tx_fifo_push
+tb_top.dut.tx_fifo_pop
+tb_top.dut.tx_busy
+tb_top.uart_tx
+tb_top.tx_monitor_active

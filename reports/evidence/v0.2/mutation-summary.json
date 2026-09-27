@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-09-27T08:19:14.839322+00:00",
+  "mutation": {
+    "file": "rtl/uart_tx.sv",
+    "from": "tx <= frame_data[0];",
+    "to": "tx <= frame_data[7];"
+  },
+  "baseline_exit_code": 0,
+  "mutant_exit_code": 2,
+  "expected_checker_message": "TX pin mismatch",
+  "detected": true
+}

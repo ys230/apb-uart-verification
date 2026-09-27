@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "generated_utc": "2026-09-27T03:49:13.059735+00:00",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python": "3.14.4",
+    "verilator": "Verilator 5.032 2025-01-01 rev (Debian 5.032-1)",
+    "git_commit": "unavailable (exit 128): fatal: not a git repository (or any of the parent directories): .git",
+    "source_sha256": "bcf68512a79f252af8394ded85440f7c414054e0020172152c51a48315b9ae34",
+    "seed_count": 20,
+    "transactions_per_seed": 1000
+  },
+  "passed": 2,
+  "total": 3,
+  "cases": [
+    {
+      "test": "fifo",
+      "seed": null,
+      "wait_cycles": null,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.06,
+      "exit_code": 0,
+      "pass": true,
+      "observed": null,
+      "log": "reports/runs/latest/fifo.log",
+      "coverage_data": "reports/runs/latest/fifo.dat",
+      "command": [
+        "make",
+        "test-fifo",
+        "COVERAGE_FILE=reports/runs/latest/fifo.dat"
+      ]
+    },
+    {
+      "test": "apb",
+      "seed": 1,
+      "wait_cycles": 0,
+      "requested_transactions": null,
+      "elapsed_seconds": 76.421,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "apb",
+        "seed": 1,
+        "apb_transactions": 32,
+        "tx_frames": 0,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 0,
+        "baud_max": 0
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/apb-wait0.log",
+      "coverage_data": "reports/runs/latest/apb-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=apb",
+        "SEED=1",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/apb-wait0.dat"
+      ]
+    },
+    {
+      "test": "tx",
+      "seed": 1,
+      "wait_cycles": 0,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.019,
+      "exit_code": 0,
+      "pass": false,
+      "observed": {
+        "test": "tx",
+        "seed": 1,
+        "apb_transactions": 42,
+        "tx_frames": 27,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 27,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 1,
+        "rx_empty_reject": 0,
+        "reset_abort": 0,
+        "baud_min": 4,
+        "baud_max": 17
+      },
+      "functional_errors": [
+        "Missing reset_abort functional bin"
+      ],
+      "log": "reports/runs/latest/tx-wait0.log",
+      "coverage_data": "reports/runs/latest/tx-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=tx",
+        "SEED=1",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/tx-wait0.dat"
+      ]
+    }
+  ],
+  "code_coverage": {
+    "merged": false,
+    "error": null
+  }
+}

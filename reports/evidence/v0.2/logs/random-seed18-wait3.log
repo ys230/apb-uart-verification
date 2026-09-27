@@ -1,0 +1,14 @@
+make[1]: Entering directory '.'
+build/wait3-trace0/Vtb_top +TEST=random +SEED=18 +N_TRANSACTIONS=1000  +verilator+coverage+file+reports/runs/latest/random-seed18-wait3.dat
+COVERAGE apb_reads=537 apb_writes=476 apb_errors=425 wait_cycles=3 random_apb=1000
+COVERAGE apb write=0 error=0 wait_bucket=2 count=336
+COVERAGE apb write=0 error=1 wait_bucket=2 count=201
+COVERAGE apb write=1 error=0 wait_bucket=2 count=252
+COVERAGE apb write=1 error=1 wait_bucket=2 count=224
+COVERAGE uart tx_frames=16 rx_frames=8 bad_stop=0 false_start=0 overflow=0 rx_period_31=0 rx_period_33=0 tx_full_reject=50 rx_empty_reject=93 reset_abort=0 baud_min=16 baud_max=16
+TEST_PASS test=random seed=18 apb_transactions=1013 tx_frames=16 rx_frames=8
+- tb/tb_top.sv:720: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 100us; walltime 0.016 s; speed 6.161 ms/s
+- Verilator: cpu 0.016 s on 1 threads; alloced 91 MB
+make[1]: Leaving directory '.'

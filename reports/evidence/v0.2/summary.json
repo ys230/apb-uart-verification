@@ -1,0 +1,1292 @@
+{
+  "metadata": {
+    "generated_utc": "2026-09-27T08:15:36.501214+00:00",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python": "3.14.4",
+    "verilator": "Verilator 5.032 2025-01-01 rev (Debian 5.032-1)",
+    "git_commit": "3d4e684569f3dd596ba45ca6eb1514452304bfb2",
+    "source_sha256": "bc9bddb95d6d93553f2691c2ffe0895f8f8fd91dade267de1e4dd8debed97c4b",
+    "source_files": [
+      "rtl/apb_uart.sv",
+      "rtl/sync_fifo.sv",
+      "rtl/uart_rx.sv",
+      "rtl/uart_tx.sv",
+      "assertions/apb_uart_assertions.sv",
+      "tb/fifo_tb.sv",
+      "tb/tb_top.sv",
+      "Makefile",
+      "scripts/check_mutation.py",
+      "scripts/probe_assertions.py",
+      "scripts/publish_evidence.py",
+      "scripts/regress.py",
+      "scripts/setup-gtkwave.sh",
+      "scripts/setup-toolchain.sh"
+    ],
+    "seed_count": 20,
+    "transactions_per_seed": 1000
+  },
+  "passed": 30,
+  "total": 30,
+  "cases": [
+    {
+      "test": "fifo",
+      "seed": null,
+      "wait_cycles": null,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.007,
+      "exit_code": 0,
+      "pass": true,
+      "observed": null,
+      "log": "reports/runs/latest/fifo.log",
+      "coverage_data": "reports/runs/latest/fifo.dat",
+      "command": [
+        "make",
+        "test-fifo",
+        "COVERAGE_FILE=reports/runs/latest/fifo.dat"
+      ]
+    },
+    {
+      "test": "apb",
+      "seed": 1,
+      "wait_cycles": 0,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.014,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "apb",
+        "seed": 1,
+        "apb_transactions": 32,
+        "tx_frames": 0,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 0,
+        "baud_max": 0
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/apb-wait0.log",
+      "coverage_data": "reports/runs/latest/apb-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=apb",
+        "SEED=1",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/apb-wait0.dat"
+      ]
+    },
+    {
+      "test": "tx",
+      "seed": 1,
+      "wait_cycles": 0,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.019,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "tx",
+        "seed": 1,
+        "apb_transactions": 42,
+        "tx_frames": 27,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 27,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 1,
+        "rx_empty_reject": 0,
+        "reset_abort": 1,
+        "baud_min": 4,
+        "baud_max": 17
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/tx-wait0.log",
+      "coverage_data": "reports/runs/latest/tx-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=tx",
+        "SEED=1",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/tx-wait0.dat"
+      ]
+    },
+    {
+      "test": "rx",
+      "seed": 1,
+      "wait_cycles": 0,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.02,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "rx",
+        "seed": 1,
+        "apb_transactions": 52,
+        "tx_frames": 0,
+        "rx_frames": 29
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 29,
+        "bad_stop": 1,
+        "false_start": 1,
+        "overflow": 1,
+        "rx_period_31": 1,
+        "rx_period_33": 1,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 4,
+        "baud_max": 32
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/rx-wait0.log",
+      "coverage_data": "reports/runs/latest/rx-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=rx",
+        "SEED=1",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/rx-wait0.dat"
+      ]
+    },
+    {
+      "test": "apb",
+      "seed": 1,
+      "wait_cycles": 1,
+      "requested_transactions": null,
+      "elapsed_seconds": 70.273,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "apb",
+        "seed": 1,
+        "apb_transactions": 32,
+        "tx_frames": 0,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 0,
+        "baud_max": 0
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/apb-wait1.log",
+      "coverage_data": "reports/runs/latest/apb-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=apb",
+        "SEED=1",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/apb-wait1.dat"
+      ]
+    },
+    {
+      "test": "tx",
+      "seed": 1,
+      "wait_cycles": 1,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.018,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "tx",
+        "seed": 1,
+        "apb_transactions": 42,
+        "tx_frames": 27,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 27,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 1,
+        "rx_empty_reject": 0,
+        "reset_abort": 1,
+        "baud_min": 4,
+        "baud_max": 17
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/tx-wait1.log",
+      "coverage_data": "reports/runs/latest/tx-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=tx",
+        "SEED=1",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/tx-wait1.dat"
+      ]
+    },
+    {
+      "test": "rx",
+      "seed": 1,
+      "wait_cycles": 1,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.019,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "rx",
+        "seed": 1,
+        "apb_transactions": 52,
+        "tx_frames": 0,
+        "rx_frames": 29
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 29,
+        "bad_stop": 1,
+        "false_start": 1,
+        "overflow": 1,
+        "rx_period_31": 1,
+        "rx_period_33": 1,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 4,
+        "baud_max": 32
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/rx-wait1.log",
+      "coverage_data": "reports/runs/latest/rx-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=rx",
+        "SEED=1",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/rx-wait1.dat"
+      ]
+    },
+    {
+      "test": "apb",
+      "seed": 1,
+      "wait_cycles": 3,
+      "requested_transactions": null,
+      "elapsed_seconds": 69.386,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "apb",
+        "seed": 1,
+        "apb_transactions": 32,
+        "tx_frames": 0,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 0,
+        "baud_max": 0
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/apb-wait3.log",
+      "coverage_data": "reports/runs/latest/apb-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=apb",
+        "SEED=1",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/apb-wait3.dat"
+      ]
+    },
+    {
+      "test": "tx",
+      "seed": 1,
+      "wait_cycles": 3,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.019,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "tx",
+        "seed": 1,
+        "apb_transactions": 42,
+        "tx_frames": 27,
+        "rx_frames": 0
+      },
+      "functional_coverage": {
+        "tx_frames": 27,
+        "rx_frames": 0,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 1,
+        "rx_empty_reject": 0,
+        "reset_abort": 1,
+        "baud_min": 4,
+        "baud_max": 17
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/tx-wait3.log",
+      "coverage_data": "reports/runs/latest/tx-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=tx",
+        "SEED=1",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/tx-wait3.dat"
+      ]
+    },
+    {
+      "test": "rx",
+      "seed": 1,
+      "wait_cycles": 3,
+      "requested_transactions": null,
+      "elapsed_seconds": 0.018,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "rx",
+        "seed": 1,
+        "apb_transactions": 52,
+        "tx_frames": 0,
+        "rx_frames": 29
+      },
+      "functional_coverage": {
+        "tx_frames": 0,
+        "rx_frames": 29,
+        "bad_stop": 1,
+        "false_start": 1,
+        "overflow": 1,
+        "rx_period_31": 1,
+        "rx_period_33": 1,
+        "tx_full_reject": 0,
+        "rx_empty_reject": 1,
+        "reset_abort": 1,
+        "baud_min": 4,
+        "baud_max": 32
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/rx-wait3.log",
+      "coverage_data": "reports/runs/latest/rx-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=rx",
+        "SEED=1",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/rx-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 1,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.02,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 1,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 68,
+        "rx_empty_reject": 96,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed01-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed01-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=1",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed01-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 2,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.021,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 2,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 68,
+        "rx_empty_reject": 87,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed02-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed02-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=2",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed02-wait1.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 3,
+      "wait_cycles": 3,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.025,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 3,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 74,
+        "rx_empty_reject": 96,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed03-wait3.log",
+      "coverage_data": "reports/runs/latest/random-seed03-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=3",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed03-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 4,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.02,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 4,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 62,
+        "rx_empty_reject": 92,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed04-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed04-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=4",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed04-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 5,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.023,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 5,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 72,
+        "rx_empty_reject": 97,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed05-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed05-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=5",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed05-wait1.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 6,
+      "wait_cycles": 3,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.025,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 6,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 58,
+        "rx_empty_reject": 70,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed06-wait3.log",
+      "coverage_data": "reports/runs/latest/random-seed06-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=6",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed06-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 7,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.021,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 7,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 78,
+        "rx_empty_reject": 90,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed07-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed07-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=7",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed07-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 8,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.022,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 8,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 78,
+        "rx_empty_reject": 72,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed08-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed08-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=8",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed08-wait1.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 9,
+      "wait_cycles": 3,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.026,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 9,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 70,
+        "rx_empty_reject": 78,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed09-wait3.log",
+      "coverage_data": "reports/runs/latest/random-seed09-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=9",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed09-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 10,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.022,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 10,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 53,
+        "rx_empty_reject": 101,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed10-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed10-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=10",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed10-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 11,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.023,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 11,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 73,
+        "rx_empty_reject": 74,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed11-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed11-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=11",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed11-wait1.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 12,
+      "wait_cycles": 3,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.024,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 12,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 57,
+        "rx_empty_reject": 85,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed12-wait3.log",
+      "coverage_data": "reports/runs/latest/random-seed12-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=12",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed12-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 13,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.022,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 13,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 70,
+        "rx_empty_reject": 87,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed13-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed13-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=13",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed13-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 14,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.023,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 14,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 73,
+        "rx_empty_reject": 86,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed14-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed14-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=14",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed14-wait1.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 15,
+      "wait_cycles": 3,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.025,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 15,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 71,
+        "rx_empty_reject": 87,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed15-wait3.log",
+      "coverage_data": "reports/runs/latest/random-seed15-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=15",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed15-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 16,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.02,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 16,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 74,
+        "rx_empty_reject": 95,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed16-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed16-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=16",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed16-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 17,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.023,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 17,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 58,
+        "rx_empty_reject": 95,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed17-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed17-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=17",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed17-wait1.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 18,
+      "wait_cycles": 3,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.024,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 18,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 50,
+        "rx_empty_reject": 93,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed18-wait3.log",
+      "coverage_data": "reports/runs/latest/random-seed18-wait3.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=18",
+        "WAIT_CYCLES=3",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed18-wait3.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 19,
+      "wait_cycles": 0,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.021,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 19,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 48,
+        "rx_empty_reject": 80,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed19-wait0.log",
+      "coverage_data": "reports/runs/latest/random-seed19-wait0.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=19",
+        "WAIT_CYCLES=0",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed19-wait0.dat"
+      ]
+    },
+    {
+      "test": "random",
+      "seed": 20,
+      "wait_cycles": 1,
+      "requested_transactions": 1000,
+      "elapsed_seconds": 0.022,
+      "exit_code": 0,
+      "pass": true,
+      "observed": {
+        "test": "random",
+        "seed": 20,
+        "apb_transactions": 1013,
+        "tx_frames": 16,
+        "rx_frames": 8
+      },
+      "functional_coverage": {
+        "tx_frames": 16,
+        "rx_frames": 8,
+        "bad_stop": 0,
+        "false_start": 0,
+        "overflow": 0,
+        "rx_period_31": 0,
+        "rx_period_33": 0,
+        "tx_full_reject": 68,
+        "rx_empty_reject": 80,
+        "reset_abort": 0,
+        "baud_min": 16,
+        "baud_max": 16
+      },
+      "functional_errors": [],
+      "log": "reports/runs/latest/random-seed20-wait1.log",
+      "coverage_data": "reports/runs/latest/random-seed20-wait1.dat",
+      "command": [
+        "make",
+        "test",
+        "TEST=random",
+        "SEED=20",
+        "WAIT_CYCLES=1",
+        "N_TRANSACTIONS=1000",
+        "COVERAGE_FILE=reports/runs/latest/random-seed20-wait1.dat"
+      ]
+    }
+  ],
+  "code_coverage": {
+    "merged": true,
+    "info": "reports/runs/latest/coverage.info",
+    "rtl_lines_hit": 270,
+    "rtl_lines_total": 274,
+    "rtl_line_percent": 98.54,
+    "by_file": {
+      "rtl/apb_uart.sv": {
+        "hit": 104,
+        "total": 105
+      },
+      "rtl/sync_fifo.sv": {
+        "hit": 32,
+        "total": 33
+      },
+      "rtl/uart_rx.sv": {
+        "hit": 77,
+        "total": 78
+      },
+      "rtl/uart_tx.sv": {
+        "hit": 57,
+        "total": 58
+      }
+    }
+  }
+}

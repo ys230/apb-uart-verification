@@ -1,0 +1,21 @@
+make[1]: Entering directory '.'
+build/fifo/Vfifo_tb +verilator+coverage+file+reports/runs/latest/fifo.dat
+COVERAGE fifo cycles=267 pushes=128 pops=123 depth=5
+COVERAGE fifo state=0 push=0 pop=0 count=3
+COVERAGE fifo state=0 push=0 pop=1 count=5
+COVERAGE fifo state=0 push=1 pop=0 count=11
+COVERAGE fifo state=0 push=1 pop=1 count=3
+COVERAGE fifo state=1 push=0 pop=0 count=43
+COVERAGE fifo state=1 push=0 pop=1 count=47
+COVERAGE fifo state=1 push=1 pop=0 count=72
+COVERAGE fifo state=1 push=1 pop=1 count=42
+COVERAGE fifo state=2 push=0 pop=0 count=3
+COVERAGE fifo state=2 push=0 pop=1 count=6
+COVERAGE fifo state=2 push=1 pop=0 count=4
+COVERAGE fifo state=2 push=1 pop=1 count=28
+FIFO_TEST_PASS cycles=267 pushes=128 pops=123 depth=5
+- tb/fifo_tb.sv:164: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.032 2025-01-01
+- Verilator: $finish at 3us; walltime 0.002 s; speed 1.078 ms/s
+- Verilator: cpu 0.003 s on 1 threads; alloced 89 MB
+make[1]: Leaving directory '.'

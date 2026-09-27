@@ -1,0 +1,26 @@
+[*]
+[*] APB UART RX 파형: rx.vcd와 함께 열기
+[*]
+[timestart] 0
+[size] 1280 800
+[signals_width] 205
+@28
+tb_top.PCLK
+tb_top.PRESETn
+tb_top.uart_rx
+tb_top.dut.rx_busy
+tb_top.dut.rx_valid
+@22
+tb_top.dut.rx_data[7:0]
+@28
+tb_top.dut.rx_fifo_push
+tb_top.dut.rx_fifo_pop
+tb_top.PSEL
+tb_top.PENABLE
+tb_top.PWRITE
+@22
+tb_top.PADDR[31:0]
+tb_top.PRDATA[31:0]
+@28
+tb_top.PREADY
+tb_top.PSLVERR
