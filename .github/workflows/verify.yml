@@ -1,0 +1,35 @@
+name: APB UART 검증
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  simulation:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: 시뮬레이터 설치
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y verilator make g++ python3
+      - name: RTL 정적 검사
+        run: make lint
+      - name: 지향 및 무작위 회귀 검증
+        run: make regress
+      - name: TX 검사기의 알려진 결함 검출 확인
+        run: make mutation
+      - name: 시뮬레이터의 SVA 실행 확인
+        run: python3 scripts/probe_assertions.py
+      - name: 검증 증거 저장
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: apb-uart-verification
+          path: reports/runs/latest/
+          if-no-files-found: warn

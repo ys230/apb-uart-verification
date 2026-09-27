@@ -1,0 +1,7 @@
+/build/
+/reports/runs/
+*.vcd
+!/reports/evidence/v0.2/*.vcd
+*.fst
+coverage.dat
+__pycache__/
