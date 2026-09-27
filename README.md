@@ -2,7 +2,7 @@
 
 SystemVerilog로 설계한 APB3 UART와 결과를 스스로 판정하는 SystemVerilog 테스트벤치입니다. APB 쓰기로 입력한 데이터는 `uart_tx`에서 8N1 파형으로 송신됩니다. 독립적인 직렬 입력으로 받은 데이터는 RX FIFO를 거쳐 APB에서 읽을 수 있습니다.
 
-**현재 상태: v0.2 로컬 검증 완료.** 고정된 seed 20개에서 각각 랜덤 APB 동작 1,000건을 실행한 것을 포함해 회귀 시험 30건을 모두 통과했습니다. [검증 증거](reports/evidence/v0.2/README.md)에 로그, 커버리지, 파형, TX 핀 모니터가 발견한 의도적 결함이 있습니다. 구현 범위는 [v0.2 로드맵](docs/roadmap.md), [사양](docs/specification.md), [검증 계획](docs/verification-plan.md)에 정리했습니다. [최초 제안서](IMPLEMENTATION_PLAN.md)도 참고용으로 보관합니다.
+**현재 상태: v0.2 로컬 검증 완료.** 고정된 seed 20개에서 각각 랜덤 APB 동작 1,000건을 실행한 것을 포함해 회귀 시험 30건을 모두 통과했습니다. [검증 증거](reports/evidence/v0.2/README.md)에 로그, 커버리지, 파형, TX 핀 모니터가 발견한 의도적 결함이 있습니다. 현재 기능과 연결 구조는 [아키텍처](architecture.md)에, 구현 범위는 [v0.2 로드맵](docs/roadmap.md), [사양](docs/specification.md), [검증 계획](docs/verification-plan.md)에 정리했습니다. [최초 제안서](IMPLEMENTATION_PLAN.md)도 참고용으로 보관합니다.
 
 ## 설계 구성
 
